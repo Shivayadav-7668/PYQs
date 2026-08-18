@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Mains 2027 | Relations & Functions - Quiz</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 680px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+
+        .header h1 {
+            color: #312e81;
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .sub-header {
+            color: #6366f1;
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .quiz-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .image-box {
+            text-align: center;
+            margin-bottom: 25px;
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            max-height: 280px;
+            object-fit: contain;
+        }
+
+        .options-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+
+        .option {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            border-color: #6366f1;
+            background: #eef2ff;
+            transform: translateX(4px);
+        }
+
+        .option.selected {
+            border-color: #4f46e5;
+            background: #e0e7ff;
+            color: #312e81;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            float: right;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        .result-container {
+            text-align: left;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .review-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 6px solid #cbd5e1;
+            font-size: 14px;
+        }
+        .review-item.correct { border-left-color: #22c55e; background: #f0fdf4; }
+        .review-item.incorrect { border-left-color: #ef4444; background: #fef2f2; }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container" id="quiz">
+        <div class="header">
+            <h1>JEE Mains 2027</h1>
+            <div class="sub-header">Chapter: Relations and Functions</div>
+        </div>
+        
+        <div id="quiz-body">
+            <div class="quiz-meta">
+                <span id="progress">Question 1 of 25</span>
+                <span style="color: #4f46e5;">Target: 99+ Percentile</span>
+            </div>
+            
+            <!-- Question Image -->
+            <div class="image-box">
+                <img id="question-img" src="q1.jpg" alt="Question Image">
+            </div>
+
+            <!-- A, B, C, D Options -->
+            <ul class="options-list">
+                <li class="option" onclick="selectOption(0)">A) <span id="opt-0"></span></li>
+                <li class="option" onclick="selectOption(1)">B) <span id="opt-1"></span></li>
+                <li class="option" onclick="selectOption(2)">C) <span id="opt-2"></span></li>
+                <li class="option" onclick="selectOption(3)">D) <span id="opt-3"></span></li>
+            </ul>
+
+            <button class="btn" onclick="nextQuestion()">Next Question &rarr;</button>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Yahan apne 25 questions ki images aur sahi options (0=A, 1=B, 2=C, 3=D) dalein
+        const quizData = [
+            { image: "a1.jpeg", options: [" 1", " 2", "3", "4"], answer: 0 },
+            { image: "a2.jpeg", options: [" 1", " 2", "3", "4"], answer: 1 },
+            { image: "a3.jpeg", options: [" 1", " 2", "3", "4"], answer: 1 },
+            { image: "a4.jpeg", options: [" 1", " 2", "3", "4"], answer: 0 },
+            { image: "a5.jpeg", options: [" 1", " 2", "3", "4"], answer: 2 },
+            { image: "a6.jpeg", options: [" 1", " 2", "3", "4"], answer: 2 },
+            { image: "a7.jpeg", options: [" 1", " 2", "3", "4"], answer: 2 },
+            { image: "a8.jpeg", options: [" 1", " 2", "3", "4"], answer: 2 },
+            { image: "a9.jpeg", options: [" 1", " 2", "3", "4"], answer: 2 },
+            { image: "a10.jpeg", options: [" 1", " 2", "3", "4"], answer: 3 },
+            { image: "a11.jpeg", options: [" 1", " 2", "3", "4"], answer: 3 }
+            // Aise hi baaki 25 questions yahan add karein
+        ];
+
+
+        const scriptURL = "https://script.google.com/macros/s/AKfycby-VVEQzmQvF0TFjlWV6FjUUBOso7h43ksNML9VC8WekI1qOZGtEAab8Uin9JQVaKti/exec";
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedOptionIndex = null;
+        let userAnswers = [];
+
+        const questionImg = document.getElementById("question-img");
+        const progressText = document.getElementById("progress");
+        const quizContainer = document.getElementById("quiz-body");
+        const optionElements = [
+            document.getElementById("opt-0"),
+            document.getElementById("opt-1"),
+            document.getElementById("opt-2"),
+            document.getElementById("opt-3")
+        ];
+        const optionBoxes = document.querySelectorAll(".option");
+
+        function loadQuestion() {
+            selectedOptionIndex = null;
+            optionBoxes.forEach(opt => opt.classList.remove("selected"));
+
+            const currentQuiz = quizData[currentQuestionIndex];
+            progressText.innerText = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+            questionImg.src = currentQuiz.image;
+            
+            for (let i = 0; i < 4; i++) {
+                optionElements[i].innerText = currentQuiz.options[i];
+            }
+        }
+
+        function selectOption(index) {
+            optionBoxes.forEach(opt => opt.classList.remove("selected"));
+            optionBoxes[index].classList.add("selected");
+            selectedOptionIndex = index;
+        }
+
+        function nextQuestion() {
+            if (selectedOptionIndex === null) {
+                alert("Kripya koi ek option (A, B, C, ya D) select karein!");
+                return;
+            }
+
+            const letters = ['A', 'B', 'C', 'D'];
+            const isCorrect = selectedOptionIndex === quizData[currentQuestionIndex].answer;
+
+            userAnswers.push({
+                questionNum: currentQuestionIndex + 1,
+                image: quizData[currentQuizIndex = currentQuestionIndex].image,
+                selected: letters[selectedOptionIndex],
+                correct: letters[quizData[currentQuestionIndex].answer],
+                status: isCorrect ? "Sahi" : "Galat"
+            });
+
+            if (isCorrect) score++;
+
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                showResultAndSubmit();
+            }
+        }
+
+        function showResultAndSubmit() {
+            let reviewHTML = "";
+            userAnswers.forEach((ans) => {
+                const isCorrect = ans.status === "Sahi";
+                reviewHTML += `
+                    <div class="review-item ${isCorrect ? 'correct' : 'incorrect'}">
+                        <p><strong>Q${ans.questionNum}:</strong> ${isCorrect ? '✅ Sahi' : '❌ Galat'}</p>
+                        <p>Aapka jawab: <strong>${ans.selected}</strong> | Sahi jawab: <strong>${ans.correct}</strong></p>
+                    </div>
+                `;
+            });
+
+            quizContainer.innerHTML = `
+                <div class="result-container">
+                    <h2 style="color: #312e81; margin-bottom: 15px;">Test Complete! 🎉</h2>
+                    <p style="font-size: 18px; margin-bottom: 20px;">Final Score: <strong>${score} / ${quizData.length}</strong></p>
+                    <h3 style="margin-bottom: 10px; color: #475569;">Detailed Analysis:</h3>
+                    ${reviewHTML}
+                    <button class="btn" onclick="location.reload()" style="float: none; width: 100%; margin-top: 20px;">Dobara Practice Karein</button>
+                </div>
+            `;
+
+            // Data Google Sheet par bhej diya jayega
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ score: score + " / " + quizData.length, answers: userAnswers })
+            }).catch(error => console.error('Error!', error.message));
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
